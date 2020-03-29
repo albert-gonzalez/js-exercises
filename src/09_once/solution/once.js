@@ -1,4 +1,4 @@
-export default function once(cb) {
+export default function once(fn) {
     let called = false;
     let result;
 
@@ -7,7 +7,7 @@ export default function once(cb) {
             return result;
         }
 
-        result = cb(...args);
+        result = fn(...args);
         called = true;
 
         return result;

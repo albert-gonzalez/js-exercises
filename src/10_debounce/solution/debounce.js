@@ -1,4 +1,4 @@
-export default function debounce(cb, wait = 0) {
+export default function debounce(fn, wait = 0) {
     let lastTimeoutId;
 
     const cancel = () => {
@@ -12,7 +12,7 @@ export default function debounce(cb, wait = 0) {
         }
 
         lastTimeoutId = setTimeout(() => {
-            cb(...args);
+            fn(...args);
             lastTimeoutId = undefined;
         }, wait);
     }

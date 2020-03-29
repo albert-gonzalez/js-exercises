@@ -1,4 +1,4 @@
-export default function memoize(cb) {
+export default function memoize(fn) {
     const cache = {};
 
     return (...args) => {
@@ -8,7 +8,7 @@ export default function memoize(cb) {
             return cache[key];
         }
 
-        const result = cb(...args);
+        const result = fn(...args);
         cache[key] = result;
 
         return result;

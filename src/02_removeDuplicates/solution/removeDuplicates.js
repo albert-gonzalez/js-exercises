@@ -8,7 +8,7 @@ export default function removeDuplicates(str) {
 /* 
 
 Solution with reducer
-function removeDuplicatesReducer(str) {
+function removeDuplicates(str) {
     return str
         .split(' ')
         .reduce((acc, word) => {
