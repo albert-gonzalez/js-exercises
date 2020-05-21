@@ -30,7 +30,7 @@ describe('reduce function', () => {
         expect(arraySpy).toEqual([1]);
     });
 
-    test('If no initialValue is passed, the first element in the array will be used and skipped', () => {
+    test('If no initialValue is passed, the first element in the array will be used as inital value and skipped in the reduce', () => {
         let accSpy;
         let currentSpy;
 
@@ -45,7 +45,7 @@ describe('reduce function', () => {
         expect(currentSpy).toEqual(2);
     });
 
-    test("the accumulator should accumulate callback's return values. The reduce function will return this accumulator", () => {
+    test("the accumulator should accumulate callback's return values for each value in the array. The reduce function will return this accumulator when all the values in the array have benn processed", () => {
         // Sum
         expect(reduce([5, 3, 2], (acc, current) => acc + current, 1)).toEqual(
             11
