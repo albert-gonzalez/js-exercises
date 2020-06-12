@@ -18,7 +18,7 @@ describe('promiseAll function', () => {
     test('it should return a forever pending promise provided iterable is empty', async () => {
         const spy = jest.fn();
 
-        promiseRace()
+        promiseRace([])
             .then(spy)
             .catch(spy);
 
@@ -88,12 +88,10 @@ describe('promiseAll function', () => {
             setTimeout(() => reject('First promise rejected'), 1000)
         );
 
-        const promise2Seconds = new Promise((resolve, reject) =>
-            setTimeout(() => reject('Second promise rejected'), 2000)
-        );
+        const promise2Seconds = Promise.reject('Second promise rejected');
 
         promiseRace([promise2Seconds, promise1Second]).catch(error => {
-            expect(error).toEqual('First promise rejected');
+            expect(error).toEqual('Second promise rejected');
             done();
         });
 

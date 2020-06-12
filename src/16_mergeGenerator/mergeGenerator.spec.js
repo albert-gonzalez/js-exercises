@@ -14,8 +14,8 @@ describe('mergeGenerator function', () => {
     });
 
     test(
-        'should accept N arguments. The first argument is the merge callback. The rest of the arguments are generators.' +
-            'The callback will receive as parameters the yielded values of the provided generators. The result of the callback will be yielded',
+        'should accept N arguments. The first argument is the merge function. The rest of the arguments are generators.' +
+            'The provided function will receive as parameters the yielded values of the provided generators. The result of the callback will be yielded',
         () => {
             const merge = mergeGenerator(
                 (...values) => values,

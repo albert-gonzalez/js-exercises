@@ -1,8 +1,10 @@
 import lotteryGenerator from './lotteryGenerator';
 
 describe('lotteryGenerator function', () => {
+    let randomSpy;
+
     beforeEach(() => {
-        jest.spyOn(global.Math, 'random')
+        randomSpy = jest.spyOn(global.Math, 'random')
             .mockReturnValue(0.5)
             .mockReturnValueOnce(0.001)
             .mockReturnValueOnce(0.2)
@@ -14,7 +16,7 @@ describe('lotteryGenerator function', () => {
     });
 
     afterEach(() => {
-        global.Math.random.mockRestore();
+        randomSpy.mockRestore();
     });
 
     test('should be a generator', () => {
@@ -25,12 +27,14 @@ describe('lotteryGenerator function', () => {
         const lottery = lotteryGenerator();
 
         expect(Array.from(lottery)).toEqual([1, 20, 70, 80, 100, 10]);
+        expect(randomSpy).toHaveBeenCalledTimes(7);
     });
 
     test('should generate the provided amount of random numbers with the provided max number. The numbers can not be repeated', () => {
         const lottery = lotteryGenerator(50, 7);
 
         expect(Array.from(lottery)).toEqual([1, 10, 35, 40, 50, 5, 25]);
+        expect(randomSpy).toHaveBeenCalledTimes(8);
     });
 
     test('should throw an error if it can not generate a new number after 5 retries', () => {

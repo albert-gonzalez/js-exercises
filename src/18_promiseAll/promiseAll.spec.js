@@ -14,7 +14,7 @@ describe('promiseAll function', () => {
     test('it should return a resolved promise if provided iterable is empty', async () => {
         let spy = jest.fn();
 
-        await promiseAll().then(spy);
+        await promiseAll([]).then(spy);
 
         expect(spy).toHaveBeenCalled();
     });
@@ -54,12 +54,10 @@ describe('promiseAll function', () => {
             setTimeout(() => reject('First promise rejected'), 1000)
         );
 
-        const someValue = new Promise((resolve, reject) =>
-            setTimeout(() => reject('Second promise rejected'), 2000)
-        );
+        const someValue = Promise.reject('Second promise rejected');
 
         promiseAll([promise1Second, someValue]).catch(error => {
-            expect(error).toEqual('First promise rejected');
+            expect(error).toEqual('Second promise rejected');
             done();
         });
 
