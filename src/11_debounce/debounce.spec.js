@@ -54,7 +54,6 @@ describe('debounce function', () => {
 
         debouncedCounter(2);
         debouncedCounter.cancel();
-        debouncedCounter.cancel();
 
         jest.advanceTimersByTime(500);
         expect(counter).toEqual(0);

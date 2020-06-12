@@ -1,7 +1,7 @@
-import memoize from '../04_memoize/memoize';
+import memoize from '../06_memoize/memoize';
 
 const module = {
-    factorial: memoize(function(n) {
+    factorial: memoize(n => {
         if (n === 1) {
             return n;
         }
