@@ -1,4 +1,4 @@
-export default function* fibonnaciGenerator() {
+export default function* fibonacciGenerator() {
     let current;
     let previous;
     let tmp;

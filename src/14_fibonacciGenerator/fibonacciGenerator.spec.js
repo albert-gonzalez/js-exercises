@@ -1,13 +1,13 @@
-import fibonnaciGenerator from './fibonacciGenerator';
+import fibonacciGenerator from './fibonacciGenerator';
 
 describe('fibonacci generator function', () => {
     test('should be a generator', () => {
-        expect(fibonnaciGenerator.constructor.name).toBe('GeneratorFunction');
+        expect(fibonacciGenerator.constructor.name).toBe('GeneratorFunction');
     });
 
     test('should generate fibonacci sequence in each next call', () => {
         let numArray = [];
-        for (let num of fibonnaciGenerator()) {
+        for (let num of fibonacciGenerator()) {
             if (num > 13) {
                 break;
             }
@@ -19,8 +19,8 @@ describe('fibonacci generator function', () => {
     });
 
     test('should not share state between generators', () => {
-        const fibonacci = fibonnaciGenerator();
-        const otherFibonacci = fibonnaciGenerator();
+        const fibonacci = fibonacciGenerator();
+        const otherFibonacci = fibonacciGenerator();
 
         expect(fibonacci.next().value).toEqual(1);
         expect(fibonacci.next().value).toEqual(2);
@@ -32,7 +32,7 @@ describe('fibonacci generator function', () => {
     });
 
     test('it should reset the sequence if a truthy value is provided to next function', () => {
-        const fibonacci = fibonnaciGenerator();
+        const fibonacci = fibonacciGenerator();
 
         expect(fibonacci.next().value).toEqual(1);
         expect(fibonacci.next().value).toEqual(2);

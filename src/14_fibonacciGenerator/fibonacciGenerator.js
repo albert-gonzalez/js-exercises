@@ -1,1 +1,1 @@
-export default function* fibonnaciGenerator() {}
+export default function* fibonacciGenerator() {}

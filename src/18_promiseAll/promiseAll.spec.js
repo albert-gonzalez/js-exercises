@@ -19,14 +19,14 @@ describe('promiseAll function', () => {
         expect(spy).toHaveBeenCalled();
     });
 
-    test('it should return a promise that fulfills when all of the promises passed as an iterable have been fulfilled', done => {
-        const promise1Second = new Promise(resolve =>
+    test('it should return a promise that fulfills when all of the promises passed as an iterable have been fulfilled', (done) => {
+        const promise1Second = new Promise((resolve) =>
             setTimeout(() => resolve(1), 1000)
         );
 
         const promise2Seconds = Promise.resolve(2);
 
-        promiseAll([promise1Second, promise2Seconds]).then(values => {
+        promiseAll([promise1Second, promise2Seconds]).then((values) => {
             expect(values).toEqual([1, 2]);
             done();
         });
@@ -34,14 +34,14 @@ describe('promiseAll function', () => {
         jest.advanceTimersByTime(1000);
     });
 
-    test('it should return a promise that fulfills when all of the promises passed as an iterable have been fulfilled, even if some of the values in the iterable are not promises', done => {
-        const promise1Second = new Promise(resolve =>
+    test('it should return a promise that fulfills when all of the promises passed as an iterable have been fulfilled, even if some of the values in the iterable are not promises', (done) => {
+        const promise1Second = new Promise((resolve) =>
             setTimeout(() => resolve(1), 1000)
         );
 
         const someValue = 35;
 
-        promiseAll([promise1Second, someValue]).then(values => {
+        promiseAll([promise1Second, someValue]).then((values) => {
             expect(values).toEqual([1, 35]);
             done();
         });
@@ -49,14 +49,14 @@ describe('promiseAll function', () => {
         jest.advanceTimersByTime(2000);
     });
 
-    test('it should return a promise that rejects with the reason of the first promise that rejects', done => {
+    test('it should return a promise that rejects with the reason of the first promise that rejects', (done) => {
         const promise1Second = new Promise((resolve, reject) =>
             setTimeout(() => reject('First promise rejected'), 1000)
         );
 
         const someValue = Promise.reject('Second promise rejected');
 
-        promiseAll([promise1Second, someValue]).catch(error => {
+        promiseAll([promise1Second, someValue]).catch((error) => {
             expect(error).toEqual('Second promise rejected');
             done();
         });
