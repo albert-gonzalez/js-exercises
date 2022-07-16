@@ -2,6 +2,8 @@
 
 This is a collection of 18 short JS exercises (or challenges) that you could find in a job interview. There are exercises about strings, arrays, promises, generators and functions. Inside every exercise you can find a README that explains the exercise and provides documentation pages. Every exercise are unit tested, so you can test your solution running the tests.
 
+This repository is based on the Interviewing for Frontends course by Jem Young: https://github.com/young/frontend-interviewing
+
 ## Installation
 
 -   Download this repository
